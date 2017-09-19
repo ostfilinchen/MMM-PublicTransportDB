@@ -29,7 +29,7 @@ Module.register("MMM-PublicTransportDB",{
         StartLocation: "Landesämter Kamenz",
         StopLocation: "Hauptbahnhof Dresden",
         TimeTillStartLocation: 5,
-        Transportation: 1023 //1023 alle, 1022 ohne ICE, 1016 Regio
+        Transportation: 1023, //1023 alle, 1022 ohne ICE, 1016 Regio
         
 
 		initialLoadDelay: 2500, // 2.5 seconds delay. This delay is used to keep the wunderground API happy.
