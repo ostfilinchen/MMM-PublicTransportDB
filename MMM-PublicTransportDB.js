@@ -37,11 +37,11 @@ Module.register("MMM-PublicTransportDB",{
 
 		apiBase: "http://reiseauskunft.bahn.de/bin/query.exe/?cb=done&encoding=utf-8&nrCons=3",
 		uriEndpoint: "&widget=1&start=1",
-        Start: "&S=" + this.config.StartLocation,
-        Stop: "&Z=" + this.config.StopLocation,
-        Product: "&journeyProducts=" + this.config.Transportation,
-        TimeToDeparture: "&wTime=" + this.config.TimeTillStartLocation
-        url: apiBase + Start + Stop + Product + TimeToDeparture + uriEndPoint
+        Start: "&S=",
+        Stop: "&Z=",
+        Product: "&journeyProducts=",
+        TimeToDeparture: "&wTime=",
+        //url: apiBase + Start + Stop + Product + TimeToDeparture + uriEndPoint
 
 
 
@@ -189,13 +189,15 @@ Module.register("MMM-PublicTransportDB",{
 	 * Calls processTransport on succesfull response.
 	 */
 	updateTransport: function() {
-		var url = this.config.apiBase + this.config.Start + this.config.Stop + this.config.Product + this.config.TimeToDeparture + this.config.uriEndPoint;
+		var url = this.config.apiBase + this.config.Start + this.config.StartLocation + this.config.Stop + this.config.StopLocation + this.config.Product + this.config.Transportation + this.config.TimeToDeparture + this.config.TimeTillStartLocation + this.config.uriEndpoint;
 		var self = this;
 
 		var retry = true;
 
 		var transportRequest = new XMLHttpRequest();
-		transportRequest.open("GET", url, true);
+		transportRequest.open("POST", url, true);
+        transportRequest.setRequestHeader('X-PINGOTHER', 'pingpong');
+        transportRequest.setRequestHeader('Content-Type', 'application/xml');
 		transportRequest.onreadystatechange = function() {
 			if (this.readyState === 4) {
 				if (this.status === 200) {
