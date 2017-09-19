@@ -48,9 +48,9 @@ Module.register("MMM-PublicTransportDB",{
 	},
 
 	// Define required scripts.
-	//getScripts: function() {
-	//	return ["moment.js"];
-	//},
+	getScripts: function() {
+		return ["moment.js"];
+	},
 
 	// Define required scripts.
 	getStyles: function() {
@@ -58,12 +58,12 @@ Module.register("MMM-PublicTransportDB",{
 	},
 
 	// Define required translations.
-	getTranslations: function() {
-		// The translations for the defaut modules are defined in the core translation files.
-		// Therefor we can just return false. Otherwise we should have returned a dictionary.
-		// If you're trying to build your own module including translations, check out the documentation.
-		return false;
-	},
+    	getTranslations: function() {
+        	return {
+            		en: "translations/en.json",
+            		de: "translations/de.json"
+        		};
+    	},
 
 	// Define start sequence.
 	start: function() {
