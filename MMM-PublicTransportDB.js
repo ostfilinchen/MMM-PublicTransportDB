@@ -195,9 +195,10 @@ Module.register("MMM-PublicTransportDB",{
 		var retry = true;
 
 		var transportRequest = new XMLHttpRequest();
-		transportRequest.open("POST", url, true);
-        transportRequest.setRequestHeader('X-PINGOTHER', 'pingpong');
-        transportRequest.setRequestHeader('Content-Type', 'application/xml');
+		transportRequest.open("GET", url, true);
+        	//transportRequest.setRequestHeader('X-PINGOTHER', 'pingpong');
+		transportRequest.withCredentials = true;
+        	transportRequest.setRequestHeader('Content-Type', 'text/html; charset=utf-8');
 		transportRequest.onreadystatechange = function() {
 			if (this.readyState === 4) {
 				if (this.status === 200) {
